@@ -4,4 +4,6 @@
     <string name="crime_titlehint">Enter a title for the crime.</string>
     <string name="crime_detailslabel">Details</string>
     <string name="crime_solvedlabel">Solved</string>
+    <string name="crimelist_contactpolice">Contact Police</string>
+    <string name="crimelist_policetoast">Police contacted for </string>
 </resources>
