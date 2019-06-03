@@ -20,9 +20,9 @@ public class CrimeListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_crimelist, container, false);
+        View view = inflater.inflate(R.layout.fragment_crime_list, container, false);
 
-        mCrimeRecyclerView = view.findViewById(R.id.recyclerview_crimelist);
+        mCrimeRecyclerView = view.findViewById(R.id.recyclerview_crime_list);
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
@@ -80,12 +80,12 @@ public class CrimeListFragment extends Fragment {
         private ImageView mSolvedImageView;
 
         public CrimeHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.item_crimelist, parent, false));
+            super(inflater.inflate(R.layout.item_crime_list, parent, false));
             itemView.setOnClickListener(this);
 
-            mTitleTextView = itemView.findViewById(R.id.tv_crimelist_title);
-            mDateTextView = itemView.findViewById(R.id.tv_crimelist_date);
-            mSolvedImageView = itemView.findViewById(R.id.iv_crimelist_solved);
+            mTitleTextView = itemView.findViewById(R.id.tv_crime_list_title);
+            mDateTextView = itemView.findViewById(R.id.tv_crime_list_date);
+            mSolvedImageView = itemView.findViewById(R.id.iv_crime_list_solved);
         }
 
         public void bind(Crime crime) {
@@ -97,7 +97,7 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
             startActivity(intent);
         }
     }
