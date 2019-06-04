@@ -1,17 +1,17 @@
 package android.beige.criminalintent;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.UUID;
 
 public class Crime {
     private UUID mId;
     private String mTitle;
-    private Date mDate;
+    private Calendar mDate;
     private boolean mSolved;
 
     public Crime() {
         mId = UUID.randomUUID();
-        mDate = new Date();
+        mDate = Calendar.getInstance();
     }
 
     public UUID getId() {
@@ -26,11 +26,11 @@ public class Crime {
         mTitle = title;
     }
 
-    public Date getDate() {
+    public Calendar getDate() {
         return mDate;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Calendar date) {
         mDate = date;
     }
 
