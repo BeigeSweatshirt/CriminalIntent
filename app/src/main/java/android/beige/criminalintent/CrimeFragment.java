@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -268,8 +269,17 @@ public class CrimeFragment extends Fragment {
         if (mPhotoFile == null || !mPhotoFile.exists()) {
             mPhotoView.setImageDrawable(null);
         } else {
-            Bitmap bitmap = PictureUtils.getScaledBitmap(mPhotoFile.getPath(), getActivity());
-            mPhotoView.setImageBitmap(bitmap);
+            ViewTreeObserver observer = mPhotoView.getViewTreeObserver();
+            observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    int width = mPhotoView.getMeasuredWidth();
+                    int height = mPhotoButton.getMeasuredHeight();
+                    Bitmap bitmap = PictureUtils.
+                            getScaledBitmap(mPhotoFile.getPath(), width, height);
+                    mPhotoView.setImageBitmap(bitmap);
+                }
+            });
         }
     }
 }
