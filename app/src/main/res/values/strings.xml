@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="all_app">Criminal Intent</string>
+    <string name="crime_emptyimagedescription">Crime scene photo (not set)</string>
+    <string name="crime_imagedescription">Crime scene photo (set)</string>
+    <string name="crime_cameradescription">Take picture of crime</string>
     <string name="crime_title">Title</string>
     <string name="crime_titlehint">Enter a title for the crime.</string>
     <string name="crime_details">Details</string>
