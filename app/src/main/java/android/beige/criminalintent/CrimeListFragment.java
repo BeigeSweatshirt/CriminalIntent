@@ -1,6 +1,6 @@
 package android.beige.criminalintent;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +22,18 @@ public class CrimeListFragment extends Fragment {
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
     private boolean mSubtitleVisible;
+    private Callbacks mCallbacks;
+
+    //Required interface for hosting activities
+    public interface Callbacks {
+        void onCrimeSelected(Crime crime);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCallbacks = (Callbacks) context;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +44,7 @@ public class CrimeListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_crime_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_crimelist, container, false);
 
         mCrimeRecyclerView = view.findViewById(R.id.recyclerview_crime_list);
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -59,13 +71,19 @@ public class CrimeListFragment extends Fragment {
     }
 
     @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_crime_list, menu);
 
         MenuItem subtitleItem = menu.findItem(R.id.show_subtitle);
-        if (mSubtitleVisible) subtitleItem.setTitle(R.string.hide_subtitle);
-        else subtitleItem.setTitle(R.string.show_subtitle);
+        if (mSubtitleVisible) subtitleItem.setTitle(R.string.crimelist_hidesubtitle);
+        else subtitleItem.setTitle(R.string.crimelist_showsubtitle);
     }
 
     @Override
@@ -74,8 +92,8 @@ public class CrimeListFragment extends Fragment {
             case R.id.new_crime:
                 Crime crime = new Crime();
                 CrimeLab.get(getActivity()).addCrime(crime);
-                Intent intent = CrimePagerActivity.newIntent(getActivity(), crime.getId());
-                startActivity(intent);
+                updateUI();
+                mCallbacks.onCrimeSelected(crime);
                 return true;
             case R.id.show_subtitle:
                 mSubtitleVisible = !mSubtitleVisible;
@@ -90,14 +108,14 @@ public class CrimeListFragment extends Fragment {
     private void updateSubtitle() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         int crimeCount = crimeLab.getCrimes().size();
-        String subtitle = getString(R.string.subtitle_format, crimeCount);
+        String subtitle = getString(R.string.crimelist_subtitleformat, crimeCount);
         if (!mSubtitleVisible) subtitle = null;
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.getSupportActionBar().setSubtitle(subtitle);
     }
 
-    private void updateUI() {
+    public void updateUI() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
 
@@ -149,12 +167,12 @@ public class CrimeListFragment extends Fragment {
         private ImageView mSolvedImageView;
 
         public CrimeHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.item_crime_list, parent, false));
+            super(inflater.inflate(R.layout.item_crimelist, parent, false));
             itemView.setOnClickListener(this);
 
-            mTitleTextView = itemView.findViewById(R.id.tv_crime_list_title);
-            mDateTextView = itemView.findViewById(R.id.tv_crime_list_date);
-            mSolvedImageView = itemView.findViewById(R.id.iv_crime_list_solved);
+            mTitleTextView = itemView.findViewById(R.id.tv_crimelist_title);
+            mDateTextView = itemView.findViewById(R.id.tv_crimelist_date);
+            mSolvedImageView = itemView.findViewById(R.id.iv_crimelist_solved);
         }
 
         public void bind(Crime crime) {
@@ -166,8 +184,7 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
-            startActivity(intent);
+            mCallbacks.onCrimeSelected(mCrime);
         }
     }
 }

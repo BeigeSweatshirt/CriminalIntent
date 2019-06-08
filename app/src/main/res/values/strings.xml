@@ -1,24 +1,22 @@
 <resources>
-    <string name="app_name">Criminal Intent</string>
-    <string name="crime_title_label">Title</string>
-    <string name="crime_title_hint">Enter a title for the crime.</string>
-    <string name="crime_details_label">Details</string>
-    <string name="crime_solved_label">Solved</string>
-    <string name="crime_first">First Crime</string>
-    <string name="crime_last">Last Crime</string>
-    <string name="date_picker_title">Date of crime:</string>
-    <string name="new_crime">New Crime</string>
-    <string name="show_subtitle">Show Subtitle</string>
-    <string name="hide_subtitle">Hide Subtitle</string>
-    <string name="subtitle_format">%d crimes</string>
-    <string name="crime_suspect_text">Choose suspect</string>
-    <string name="crime_report_text">Send Crime Report</string>
-    <string name="crime_report">%1$s!
+    <string name="all_app">Criminal Intent</string>
+    <string name="crime_title">Title</string>
+    <string name="crime_titlehint">Enter a title for the crime.</string>
+    <string name="crime_details">Details</string>
+    <string name="crime_solved">Solved</string>
+    <string name="crime_datetitle">Date of crime:</string>
+    <string name="crimelist_new">New Crime</string>
+    <string name="crimelist_showsubtitle">Show Subtitle</string>
+    <string name="crimelist_hidesubtitle">Hide Subtitle</string>
+    <string name="crimelist_subtitleformat">%d crimes</string>
+    <string name="crime_suspect">Choose suspect</string>
+    <string name="crime_reportsend">Send Crime Report</string>
+    <string name="crime_fullreport">%1$s!
     The crime was discovered on %2$s. %3$s, and %4$s</string>
-    <string name="crime_report_solved">The case is solved</string>
-    <string name="crime_report_unsolved">The case remains unsolved</string>
-    <string name="crime_report_no_suspect">no suspect has been identified</string>
-    <string name="crime_report_suspect">the primary suspect is %s.</string>
-    <string name="crime_report_subject">CriminalIntent Crime Report</string>
-    <string name="send_report">Send crime report via</string>
+    <string name="crime_reportsolved">The case is solved</string>
+    <string name="crime_reportunsolved">The case remains unsolved</string>
+    <string name="crime_reportnosuspect">no suspect has been identified</string>
+    <string name="crime_reportsuspect">the primary suspect is %s.</string>
+    <string name="crime_reportsubject">CriminalIntent Crime Report</string>
+    <string name="crime_reportintenttitle">Send crime report via</string>
 </resources>

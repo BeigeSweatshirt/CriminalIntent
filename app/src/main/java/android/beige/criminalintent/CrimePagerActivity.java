@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.List;
 import java.util.UUID;
 
-public class CrimePagerActivity extends AppCompatActivity {
+public class CrimePagerActivity extends AppCompatActivity implements CrimeFragment.Callbacks {
     private static final String EXTRA_CRIME_ID = "com.android.beige.criminalintent.crime_id";
 
     private ViewPager mViewPager;
@@ -27,7 +27,7 @@ public class CrimePagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crime_pager);
+        setContentView(R.layout.activity_crimepager);
 
         UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_CRIME_ID);
 
@@ -54,4 +54,7 @@ public class CrimePagerActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    public void onCrimeUpdated(Crime crime) {}
 }
