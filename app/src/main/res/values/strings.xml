@@ -16,11 +16,15 @@
     <string name="crime_suspect">Choose suspect</string>
     <string name="crime_reportsend">Send Crime Report</string>
     <string name="crime_fullreport">%1$s!
-    The crime was discovered on %2$s. %3$s, and %4$s</string>
+    The crime was reported on %2$s. %3$s, and %4$s</string>
     <string name="crime_reportsolved">The case is solved</string>
     <string name="crime_reportunsolved">The case remains unsolved</string>
     <string name="crime_reportnosuspect">no suspect has been identified</string>
     <string name="crime_reportsuspect">the primary suspect is %s.</string>
     <string name="crime_reportsubject">CriminalIntent Crime Report</string>
     <string name="crime_reportintenttitle">Send crime report via</string>
+    <string name="crimelist_ttsresolvedcrime">Resolved</string>
+    <string name="crimelist_ttsunresolvedcrime">Unsolved</string>
+    <string name="crimelist_tts">
+        %1$s crime %2$s reported on %3$s</string>
 </resources>

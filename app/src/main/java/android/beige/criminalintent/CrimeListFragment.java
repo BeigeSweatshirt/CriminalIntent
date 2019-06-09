@@ -181,6 +181,20 @@ public class CrimeListFragment extends Fragment {
             mTitleTextView.setText(mCrime.getTitle());
             mDateTextView.setText(DateFormat.getDateInstance().format(mCrime.getDate()));
             mSolvedImageView.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
+
+            String crimeSolved;
+            if (crime.isSolved()) crimeSolved = getString(R.string.crimelist_ttsresolvedcrime);
+            else crimeSolved = getString(R.string.crimelist_ttsunresolvedcrime);
+
+            String crimeTitle;
+            if (crime.getTitle() == null) crimeTitle = "";
+            else crimeTitle = crime.getTitle();
+
+            String crimeDate = DateFormat.getDateInstance().format(mCrime.getDate());
+
+            String crimeItem = getString(R.string.crimelist_tts,
+                    crimeSolved, crimeTitle, crimeDate);
+            itemView.setContentDescription(crimeItem);
         }
 
         @Override
