@@ -1,5 +1,5 @@
 # CriminalIntent 
-An Android application for logging and reporting "office crimes" - a stolen red stapler, microwave caught on fire when reheating food, etc. CriminalIntent is based on Android Programming: The Big Nerd Ranch Guide. The main branch is the base app, challenge exercises are implemented in the branches.
+An Android application for logging and reporting "office crimes" - a stolen red stapler, stapler submerged in Jell-O, unattended microwave caught on fire when reheating popcorn, etc. CriminalIntent is based on Android Programming: The Big Nerd Ranch Guide. The main branch is the base app, challenge exercises are implemented in the branches.
 
 ## What I Learned About
 - The Model-View-Controller (MVC) architecture
